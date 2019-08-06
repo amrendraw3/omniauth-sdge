@@ -11,14 +11,14 @@ module Omniauth
     #    use OmniAuth::Strategies::Digitalocean, 'consumerkey', 'consumersecret', :scope => 'read write', :display => 'plain'
     #
     class Sdge < OmniAuth::Strategies::OAuth2
-      AUTHENTICATION_PARAMETERS = %w(display account state scope)
+      AUTHENTICATION_PARAMETERS = %w(display account state scope DataCustodianID IntervalDuration BlockDuration BR HistoryLength SubscriptionFrequency)
       BASE_URL = "https://soagwx.sempra.com:3443"
 
       option :name, "sdge"
 
       unless OmniAuth.config.test_mode
         option :client_options, {
-          :authorize_url => "#{BASE_URL}/DataCustodian/oauth/authorize?DataCustodianID=SDGE&scope=FB_1_3_4_5_8_13_14_18_19_34_35_39_40%3BIntervalDuration%3D900_3600%3BBlockDuration%3DDaily%3BBR%3D1%3BHistoryLength%3D34128000%3BSubscriptionFrequency%3DDaily%3B",
+          :authorize_url => "#{BASE_URL}/DataCustodian/oauth/authorize",
           :token_url => "#{BASE_URL}/DataCustodian/oauth/token",
           :site => BASE_URL
         }
@@ -53,16 +53,12 @@ module Omniauth
       # Hook useful for appending parameters into the auth url before sending
       # to provider.
       def request_phase
-        log :info, "Request Phase"
-        log :info, "#{params}"
         super
       end
 
       # Hook used after response with code from provider. Used to prep token
       # request from provider.
       def callback_phase
-        log :info, "Request Phase"
-        log :info, "#{params}"
         super
       end
 
