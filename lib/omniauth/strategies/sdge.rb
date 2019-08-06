@@ -53,12 +53,16 @@ module Omniauth
       # Hook useful for appending parameters into the auth url before sending
       # to provider.
       def request_phase
+        log :info, "Request Phase"
+        log :info, "#{params}"
         super
       end
 
       # Hook used after response with code from provider. Used to prep token
       # request from provider.
       def callback_phase
+        log :info, "Request Phase"
+        log :info, "#{params}"
         super
       end
 
