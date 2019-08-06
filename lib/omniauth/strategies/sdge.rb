@@ -53,6 +53,7 @@ module Omniauth
       # Hook useful for appending parameters into the auth url before sending
       # to provider.
       def request_phase
+        options[:scope] = request.params["scope"]
         super
       end
 
