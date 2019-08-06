@@ -11,7 +11,7 @@ module Omniauth
     #    use OmniAuth::Strategies::Digitalocean, 'consumerkey', 'consumersecret', :scope => 'read write', :display => 'plain'
     #
     class Sdge < OmniAuth::Strategies::OAuth2
-      AUTHENTICATION_PARAMETERS = %w(display account state scope DataCustodianID IntervalDuration BlockDuration BR HistoryLength SubscriptionFrequency)
+      AUTHENTICATION_PARAMETERS = %w(display account state scope)
       BASE_URL = "https://soagwx.sempra.com:3443"
 
       option :name, "sdge"
